@@ -1,0 +1,38 @@
+version: '2'
+services:
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    expose:
+      - 27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+
+  front:
+    build: ./front
+    command: npm run start
+    environment:
+      - WATCHPACK_POLLING=true
+    volumes:
+      - ./front:/front
+      - /front/node_modules
+    ports:
+      - "8080:3000"
+    expose:
+      - 8080
+
+  api:
+    build: ./api
+    command: npm run start
+    environment:
+      - WATCHPACK_POLLING=true
+    volumes:
+      - ./api:/api
+      - /api/node_modules
+    ports:
+      - "4000:4000"
+    expose:
+      - 4000
