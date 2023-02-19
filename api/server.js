@@ -4,6 +4,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const mongoString = process.env.DATABASE_URL;
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 mongoose.connect(mongoString);
 const database = mongoose.connection;
@@ -16,6 +17,7 @@ database.once('connected', () => {
     console.log('Database Connected');
 })
 const app = express();
+app.use(cors());
 
 app.use(express.json());
 app.use(bodyParser.json());
@@ -29,6 +31,9 @@ app.use('/consoles',consoleRoutes);
 
 const genreRoutes = require('./routes/genres');
 app.use('/genres',genreRoutes);
+
+const apisRoutes = require('./routes/apis');
+app.use('/apis',apisRoutes);
 
 //start
 app.listen(4000, () => {

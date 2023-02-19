@@ -1,9 +1,6 @@
-import React, {FC} from 'react';
+import React from 'react';
 
-export interface IHomeProps {
-}
-
-const Home: FC<IHomeProps> = (props) => {
+const Home = () => {
   return (
     <>
       Welcome to home page

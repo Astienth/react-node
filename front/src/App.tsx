@@ -1,17 +1,19 @@
-import React, {FC} from 'react';
+import React from 'react';
 import './App.css';
 import {Routes, Route} from 'react-router-dom';
 import Home from './components/Home/Home';
 import Games from './components/Games/Games';
-import Navbar from './components/Navbar/Navbar';
+import ResponsiveAppBar from './components/ResponsiveAppBar/ResponsiveAppBar';
+import APIs from './components/APIs/APIs';
 
-const App: FC = () => {
+const App = () => {
   return (
     <div className="App">
-      <Navbar />
+      <ResponsiveAppBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/games" element={<Games email="dfsf" name="putain" />} />
+        <Route path="/games" element={<Games />} />
+        <Route path="/apis" element={<APIs />} />
       </Routes>
     </div>
   );
