@@ -19,11 +19,12 @@ export interface IGameDataProps {
 
 const renderConsoles : any = (consoles: Array<Iconsole>) => {
     const res = consoles.map((consol, index) => {                 
-        return <Typography key={index} sx={{ mb: 1.5 }} color="text.secondary">
-                    {consol.name}
-                </Typography>
+        return (
+            <Typography key={index} sx={{ mb: 1.5 }} color="text.secondary">
+                {consol.name}
+            </Typography>
+        )
     });
-    console.log(res);
     return res;
 }
 
