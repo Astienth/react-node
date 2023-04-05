@@ -6,9 +6,15 @@ let consoleController = {
         res.json(found);
     },
     create: async (req, res) => {
-        let newConsole = new consoleModel(req.body);
-        let savedConsole = await newConsole.save();
-        res.json(savedConsole);
+        try{
+            let newConsole = new consoleModel(req.body);
+            let savedConsole = await newConsole.save();
+            res.json(savedConsole);
+        } catch(e)
+        {
+            console.log("ERROR");   
+            res.json("ERROR");        
+        }
     }
 }
 

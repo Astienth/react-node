@@ -9,13 +9,17 @@ let gameController = {
         res.json(found);
     },
     create: async (req, res) => {
-        let newGame = new gameModel(req.body);
-        newGame.consoles = await Promise.all(req.body.consoles.map(async(item) => {
-            return await consoleModel.findOne({name: item.name}).select("_id")
-        }));
-        newGame.genre = await genreModel.findOne({name: req.body.genre.name}).select('_id');
-        let savedGame = await newGame.save();
-        res.json(savedGame);
+        try{
+            let newGame = new gameModel(req.body);
+            newGame.consoles = await Promise.all(req.body.consoles.map(async(item) => {
+                return await consoleModel.findOne({name: item.name}).select("_id")
+            }));
+            newGame.genre = await genreModel.findOne({name: req.body.genre.name}).select('_id');
+            let savedGame = await newGame.save();
+            res.json(savedGame);
+        } catch(e){
+            res.json("ERROR");
+        }
     }
 }
 

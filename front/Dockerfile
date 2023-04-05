@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node:lts-bullseye-slim
 
 WORKDIR /front
 
@@ -12,6 +12,6 @@ EXPOSE 3000
 
 COPY . .
 
-CMD [ "npm", "start" ]
+CMD [ "nodemon", "--exec", "npm", "start" ]
 
 

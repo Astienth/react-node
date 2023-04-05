@@ -24,7 +24,7 @@ const Games = () => {
 
   return (
     <>
-      {games?.map( (game) => <GameCard key={game._id} gameData={game} /> )}
+      {games.map( (game) => <GameCard key={game._id} gameData={game} /> )}
     </>
   );
 }

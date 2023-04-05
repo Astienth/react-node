@@ -37,5 +37,5 @@ app.use('/apis',apisRoutes);
 
 //start
 app.listen(4000, () => {
-    console.log(`Server Started at ${4000}`)
+    console.log(`Server Started at ${4000}`);
 })

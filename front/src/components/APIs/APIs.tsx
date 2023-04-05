@@ -4,9 +4,23 @@ import React, { useState } from 'react';
 const APIs = () => {
 
   const [api, setApi] = useState<string>('');
+  const [apiData, setApiData] = useState<any>({});
 
   const handleChange = (event: SelectChangeEvent<string>) => {
     setApi(event.target.value);
+    fetch('http://localhost:4000/apis/'+event.target.value,
+    {
+      method: 'GET',
+      headers: {'Content-Type':'application/json'}
+    })
+    .then(res => {
+      return res.json();
+    })
+    .then(data => 
+      {
+        setApiData(data);
+        //console.log(data);
+      });
   };
 
   return (
@@ -17,7 +31,7 @@ const APIs = () => {
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={api}
-          label="Age"
+          label="Api"
           onChange={handleChange}
         >
           <MenuItem value="igdb">igdb</MenuItem>

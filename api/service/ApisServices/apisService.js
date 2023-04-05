@@ -66,15 +66,18 @@ const authToken = () => {
 const getData = () => {
     const headers = {};
     let data = config[apiService.apiname].postData ?? "";
-    if(data.includes("limit"))
+    if(config[apiService.apiname].paginated)
     {
-        data = data.replace("limit", "limit "+apiService.pageSize);
+        if(data.includes("limit"))
+        {
+            data = data.replace("limit", "limit "+apiService.pageSize);
+        }
+        if(data.includes("offset"))
+        {
+            data = data.replace("offset", "offset "+apiService.page);
+        }
     }
-    if(data.includes("offset"))
-    {
-        data = data.replace("offset", "offset "+apiService.page);
-    }
-console.log(data);
+
     if(config[apiService.apiname].headers)
     {
         Object.keys(config[apiService.apiname].headers).map((key) => {

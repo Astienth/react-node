@@ -16,6 +16,7 @@ services:
     command: npm run start
     environment:
       - WATCHPACK_POLLING=true
+      - NODE_ENV="development"
     volumes:
       - ./front:/front
       - /front/node_modules
