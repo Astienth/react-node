@@ -1,6 +1,6 @@
 import React from 'react';
 import { CardContent, Typography } from '@mui/material';
-import { render } from '@testing-library/react';
+import "../../styles/gameCards.scss";
 
 export interface Iconsole {
     name: string
@@ -31,7 +31,7 @@ const renderConsoles : any = (consoles: Array<Iconsole>) => {
 const GameCard = ({ gameData: { title, genre, review, consoles }}: IGameDataProps ) => {
     return (
         <>
-            <CardContent>
+            <CardContent className='gameCard'>
                 <Typography variant="h5" component="div">
                     {title}
                 </Typography>
@@ -41,7 +41,7 @@ const GameCard = ({ gameData: { title, genre, review, consoles }}: IGameDataProp
                 <Typography sx={{ mb: 1.5 }} color="text.secondary">
                     {genre.name}
                 </Typography>
-                <Typography variant="body2">
+                <Typography variant="body2" className='review'>
                     {`${review}/10`}
                 </Typography>
             </CardContent>

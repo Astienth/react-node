@@ -15,7 +15,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 import { Link } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material';
 
-const pages = ['Games', 'APIs'];
+const pages = ['Games', 'APIs', 'ABlastVr'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 const theme = createTheme({
   components: {

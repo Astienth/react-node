@@ -1,5 +1,6 @@
 import { FormControl, InputLabel, Select, MenuItem, SelectChangeEvent } from '@mui/material';
 import React, { useState } from 'react';
+import { CardContent, Typography } from '@mui/material';
 
 const APIs = () => {
 
@@ -19,9 +20,41 @@ const APIs = () => {
     .then(data => 
       {
         setApiData(data);
-        //console.log(data);
+        console.log(data);
       });
   };
+
+  const renderList = () => {
+    console.log("LENGTH " + Object.entries(apiData).length);
+    if (Object.entries(apiData).length === 0)
+    {
+      console.log("RETURN");
+      return false;
+    }
+    if (apiData.code)
+    {
+      console.log("CODE");
+      return false;
+    }
+    return apiData.map((_item: any, index: React.Key | null | undefined) => {                 
+      return (
+        <CardContent className='gameCard' key={index}>
+          <Typography variant="h5" component="div">
+              {_item.name}
+          </Typography>
+          <Typography>
+              {`Url: ${_item.url}`}
+          </Typography>
+          <Typography sx={{ mb: 1.5 }} color="text.secondary">
+              {_item.summary}
+          </Typography>
+          <Typography variant="body2" className='review'>
+              {`Hypes: ${_item.hypes}`}
+          </Typography>
+      </CardContent>
+      )
+    });
+  }
 
   return (
     <>
@@ -42,6 +75,7 @@ const APIs = () => {
           <MenuItem value="steamdb">steamdb</MenuItem>
         </Select>
       </FormControl>
+      {renderList()}
     </>
   );
 }
