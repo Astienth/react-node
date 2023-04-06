@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../styles/aBlastVr.scss';
 
 const ABlastVr = () => {
     return (

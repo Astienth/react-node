@@ -69,7 +69,7 @@ const ResponsiveAppBar = () => {
               textDecoration: 'none',
             }}
           >
-            FLAT2VR
+            DARDYLAND
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>

@@ -1,6 +1,7 @@
 import { FormControl, InputLabel, Select, MenuItem, SelectChangeEvent } from '@mui/material';
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { CardContent, Typography } from '@mui/material';
+import "../../styles/aPIs.scss";
 
 const APIs = () => {
 
@@ -29,12 +30,24 @@ const APIs = () => {
     if (Object.entries(apiData).length === 0)
     {
       console.log("RETURN");
-      return false;
+      return (        
+        <CardContent className='gameCard'>
+          <Typography variant="h5" component="div">
+              AUCUN FLUX SELECTIONNE
+          </Typography>
+        </CardContent>
+      );
     }
     if (apiData.code)
     {
       console.log("CODE");
-      return false;
+      return (        
+        <CardContent className='gameCard'>
+          <Typography variant="h5" component="div">
+              AUCUN FLUX DISPONIBLE
+          </Typography>
+        </CardContent>
+      );
     }
     return apiData.map((_item: any, index: React.Key | null | undefined) => {                 
       return (
@@ -57,7 +70,7 @@ const APIs = () => {
   }
 
   return (
-    <>
+    <div className="fluxSelect">
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">Select API</InputLabel>
         <Select
@@ -76,7 +89,7 @@ const APIs = () => {
         </Select>
       </FormControl>
       {renderList()}
-    </>
+    </div>
   );
 }
 
