@@ -1,0 +1,1 @@
+export const Multiply = (num: number): number => num * 2;
