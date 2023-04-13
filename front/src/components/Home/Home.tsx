@@ -2,6 +2,8 @@ import React from 'react';
 import { Typography } from '@mui/material';
 import "../../styles/homepage.scss";
 
+export const Multiply = (num: number): number => num * 2;
+
 const Home = () => {
   return (
     <div className='homepage'>

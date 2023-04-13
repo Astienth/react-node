@@ -13,9 +13,15 @@ const config: Config = {
   },
   moduleNameMapper: {
     "src/(.*)": "<rootDir>/src/$1",
+    '\\.(css|scss)$': '<rootDir>/jest/__mocks__/styleMock.js',
   },
   transform: {
-    '^.+\\.(ts|tsx)?$': 'ts-jest',
+    '^.+\\.(ts|tsx)?$': [
+      'ts-jest',
+      {
+        tsconfig: 'tsconfig.spec.json',
+      },
+    ],
     "^.+\\.(js|jsx)$": "babel-jest",
   }
 };
